@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+obj
+XPloteAutoBuild/obj
+
 # Compiled Object files
 *.slo
 *.lo
