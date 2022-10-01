@@ -22,7 +22,7 @@ namespace XPloteAutoBuild
     {
         public MainWindow()
         {
-            InitializeComponent();
+             InitializeComponent();
         }
     }
 }
