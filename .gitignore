@@ -2,7 +2,8 @@
 *.d
 
 obj
-XPloteAutoBuild/obj
+XPloteAutoBuild/obj/
+.vs/
 
 # Compiled Object files
 *.slo

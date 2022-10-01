@@ -19,3 +19,4 @@ E:\Vs2017\Source\cppSharp\CppSharp-1.0.1\XPloteCppSharp\XPloteAutoBuild\XPloteAu
 E:\Vs2017\Source\cppSharp\CppSharp-1.0.1\XPloteCppSharp\XPloteAutoBuild\XPloteAutoBuild\obj\Debug\net6.0-windows7.0\XPloteAutoBuild.pdb
 E:\Vs2017\Source\cppSharp\CppSharp-1.0.1\XPloteCppSharp\XPloteAutoBuild\XPloteAutoBuild\obj\Debug\net6.0-windows7.0\XPloteAutoBuild.genruntimeconfig.cache
 E:\Vs2017\Source\cppSharp\CppSharp-1.0.1\XPloteCppSharp\XPloteAutoBuild\XPloteAutoBuild\obj\Debug\net6.0-windows7.0\ref\XPloteAutoBuild.dll
+E:\Vs2017\Source\cppSharp\CppSharp-1.0.1\XPloteCppSharp\XPloteAutoBuild\XPloteAutoBuild\bin\Debug\net6.0-windows7.0\README.md
