@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Vs2017\\Source\\cppSharp\\CppSharp-1.0.1\\XPloteCppSharp\\XPloteAutoBuild\\XPloteAutoBuild\\XPloteAutoBuild.csproj": {}
+  },
+  "projects": {
+    "E:\\Vs2017\\Source\\cppSharp\\CppSharp-1.0.1\\XPloteCppSharp\\XPloteAutoBuild\\XPloteAutoBuild\\XPloteAutoBuild.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Vs2017\\Source\\cppSharp\\CppSharp-1.0.1\\XPloteCppSharp\\XPloteAutoBuild\\XPloteAutoBuild\\XPloteAutoBuild.csproj",
+        "projectName": "XPloteAutoBuild",
+        "projectPath": "E:\\Vs2017\\Source\\cppSharp\\CppSharp-1.0.1\\XPloteCppSharp\\XPloteAutoBuild\\XPloteAutoBuild\\XPloteAutoBuild.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "E:\\Vs2017\\Source\\cppSharp\\CppSharp-1.0.1\\XPloteCppSharp\\XPloteAutoBuild\\XPloteAutoBuild\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\SoftWareInstall\\Vs2019\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "E:\\Nuget\\.nuget\\packages\\": {},
+          "E:\\Vs2017\\WPF\\SkyLineProcess\\XPloteEngine\\XPlotePackage\\Nuget\\XPlote.Framework.WPF\\Release": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
