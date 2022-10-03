@@ -5,12 +5,49 @@
     <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+	  <ImplicitUsings>true</ImplicitUsings>
+	  <OutputPath>..\\..\\bin</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\SDK\XPloteThirdParthDLL\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="CppSharp">
+      <HintPath>..\..\SDK\CppSharpLib\runtimes\win-x64\lib\netcoreapp3.1\CppSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CppSharp.AST">
+      <HintPath>..\..\SDK\CppSharpLib\runtimes\win-x64\lib\netcoreapp3.1\CppSharp.AST.dll</HintPath>
+    </Reference>
+    <Reference Include="CppSharp.Generator">
+      <HintPath>..\..\SDK\CppSharpLib\runtimes\win-x64\lib\netcoreapp3.1\CppSharp.Generator.dll</HintPath>
+    </Reference>
+    <Reference Include="CppSharp.Parser">
+      <HintPath>..\..\SDK\CppSharpLib\runtimes\win-x64\lib\netcoreapp3.1\CppSharp.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="CppSharp.Parser.CSharp">
+      <HintPath>..\..\SDK\CppSharpLib\runtimes\win-x64\lib\netcoreapp3.1\CppSharp.Parser.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CppSharp.Runtime">
+      <HintPath>..\..\SDK\CppSharpLib\runtimes\win-x64\lib\netcoreapp3.1\CppSharp.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlote.Expand">
+      <HintPath>..\..\SDK\XPloteThirdParthDLL\XPlote.Expand.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlote.Framework.WPF">
+      <HintPath>..\..\SDK\XPloteThirdParthDLL\XPlote.Framework.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlote.Themes.WPF">
+      <HintPath>..\..\SDK\XPloteThirdParthDLL\XPlote.Themes.WPF.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

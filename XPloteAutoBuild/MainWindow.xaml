@@ -5,8 +5,156 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XPloteAutoBuild"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"  Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type ScrollViewer}">
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"></Setter>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>
+            <Setter Property="CanContentScroll" Value="True"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Gray" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal"></StackPanel>
+        </Border>
+        <Border Grid.Row="1" Margin="0,2,0,2">
+            <ScrollViewer>
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="DockPanel.Dock" Value="Left"></Setter>
+                            <Setter Property="MinWidth" Value="80"></Setter>
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="Margin" Value="5,1,1,1"></Setter>
+                            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                        </Style>
+                        <Style TargetType="{x:Type DockPanel}">
+                            <Setter Property="LastChildFill" Value="True"></Setter>
+                            <Setter Property="Margin" Value="0,1,0,1"></Setter>
+                            <Setter Property="MinHeight" Value="50"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <GroupBox Header="生成库设置" MinHeight="80">
+                        <Border Margin="0,5,0,5">
+                            <StackPanel>
+                                <DockPanel>
+                                    <TextBlock Text="输入库名称: "></TextBlock>
+                                    <TextBox Text="{Binding autoM.gLibName}"></TextBox>
+                                </DockPanel>
+                                <DockPanel>
+                                    <TextBlock Text="命名空间: "></TextBlock>
+                                    <TextBox Text="{Binding autoM.gNamespaceName}"></TextBox>
+                                </DockPanel>
+                                <GroupBox>
+                                    <GroupBox.Header>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="选择并导入头文件"
+                                                    ToolTip="选择.h文件.或者导出的库文件" Margin="2"
+                                                    Command="{Binding autoVM.ISelectedHeadFiles}"></Button>
+                                        </StackPanel>
+                                    </GroupBox.Header>
+                                    <Border>
+                                        <ScrollViewer>
+                                            <ListBox MinHeight="80"
+                                                     ItemsSource="{Binding autoM.gIncludeLists}"
+                                                     SelectedItem="{Binding autoM.gSelectedIncludeFile}">
+                                                <ListBox.ContextMenu>
+                                                    <ContextMenu>
+                                                        <MenuItem Header="清除"
+                                                                  Command="{Binding autoVM.IClearnSelectedHeadFile}"></MenuItem>
+                                                        <MenuItem Header="清空"
+                                                                  Command="{Binding autoVM.IClearnHeadFiles}"></MenuItem>
+                                                    </ContextMenu>
+                                                </ListBox.ContextMenu>
+                                            </ListBox>
+                                        </ScrollViewer>
+                                    </Border>
+                                </GroupBox>
+                                <GroupBox>
+                                    <GroupBox.Header>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="选择并导入库文件(.lib)"
+                                                    ToolTip="选择.lib文件名" Margin="2"
+                                                    Command="{Binding autoVM.ISelectedLibFiles}"></Button>
+                                        </StackPanel>
+                                    </GroupBox.Header>
+                                    <Border>
+                                        <ScrollViewer>
+                                            <ListBox MinHeight="80"
+                                                ItemsSource="{Binding autoM.gLibLists}"
+                                                     SelectedItem="{Binding autoM.gSelectedLibFile}">
+                                                <ListBox.ContextMenu>
+                                                    <ContextMenu>
+                                                        <MenuItem Header="清除"
+                                                                  Command="{Binding autoVM.IClearnSelectedLibFile}"></MenuItem>
+                                                        <MenuItem Header="清空"
+                                                                  Command="{Binding autoVM.IClearnLibFiles}"></MenuItem>
+                                                    </ContextMenu>
+                                                </ListBox.ContextMenu>
+                                            </ListBox>
+                                        </ScrollViewer>
+                                    </Border>
+                                </GroupBox>
+                            </StackPanel>
+                        </Border>
+                    </GroupBox>
+                    <GroupBox Header="语言设置" MinHeight='80'>
+                        <Grid Margin="0,5,0,5">
+                            <StackPanel Orientation="Horizontal">
+                                <Border MinWidth="200">
+                                    <GroupBox Header="选择c++语言版本">
+                                        <ComboBox Margin="5,1,5,1"
+                                                  SelectedIndex="1"
+                                                  ItemsSource="{Binding autoM.gCppVersionLists}"
+                                                  SelectedItem="{Binding autoM.gSelectedVersion}"></ComboBox>
+                                    </GroupBox>
+                                </Border>
+                                <Border MinWidth="200">
+                                    <GroupBox Header="选择要转换的语言">
+                                        <ComboBox Margin="5,1,5,1"
+                                                   SelectedIndex="4"
+                                                  ItemsSource="{Binding autoM.gLanguageLists}"
+                                                   SelectedItem="{Binding autoM.gSelectedLanguage}"></ComboBox>
+                                    </GroupBox>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="输出信息">
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock Text="输出项目文件路径: "></TextBlock>
+                                <TextBox Text="{Binding autoM.gOutNet6PropDir}"></TextBox>
+                            </DockPanel>
+                            <DockPanel>
+                                <TextBlock Text="自动转换c#库路径: "></TextBlock>
+                                <TextBox Text="{Binding autoM.gOutCsharpLibPath}"></TextBox>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="生成操作">
+                        <Border Margin="5" MinHeight="45">
+                            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                                <Button Width="150"  Height="30" Margin="0,5,10,5" VerticalAlignment="Center"
+                                        Content="生成c#库接口文件"
+                                        Command="{Binding autoVM.IBuildNet6Proj}"></Button>
+                                <Button Width="150" Height="30" Margin="0,5,5,5" VerticalAlignment="Center"
+                                        Content="生成.NetWPF项目"
+                                         Command="{Binding autoVM.IBuildCsharpLib}"></Button>
+                            </StackPanel>
+                        </Border>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <Border Grid.Row="2"></Border>
     </Grid>
 </Window>

@@ -20,9 +20,15 @@ namespace XPloteAutoBuild
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow() 
+        public MainWindow()
         {
-             InitializeComponent();
+            InitializeComponent();
+            autoVM = IocHelper.gDefaultIoc.gViewModel;
+            autoM= IocHelper.gDefaultIoc.gModel;
+            this.DataContext = this;
         }
+
+        public AutoBuildViewModel autoVM { get; set; }
+        public AutoBuildModel autoM { get; set; }
     }
 }
