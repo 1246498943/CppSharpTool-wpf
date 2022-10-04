@@ -46,10 +46,6 @@
                         <Border Margin="0,5,0,5">
                             <StackPanel>
                                 <DockPanel>
-                                    <TextBlock Text="输入库名称: "></TextBlock>
-                                    <TextBox Text="{Binding autoM.gLibName}"></TextBox>
-                                </DockPanel>
-                                <DockPanel>
                                     <TextBlock Text="命名空间: "></TextBlock>
                                     <TextBox Text="{Binding autoM.gNamespaceName}"></TextBox>
                                 </DockPanel>
@@ -59,10 +55,11 @@
                                             <Button Content="选择并导入头文件"
                                                     ToolTip="选择.h文件.或者导出的库文件" Margin="2"
                                                     Command="{Binding autoVM.ISelectedHeadFiles}"></Button>
+                                            <TextBlock Text="温馨提示: (只支持单目录,尽量把导出的.h文件放在统一目录下),2: .h中包含的头文件,也放在该目录下" FontSize="10"></TextBlock>
                                         </StackPanel>
                                     </GroupBox.Header>
                                     <Border>
-                                        <ScrollViewer>
+                                        <ScrollViewer MaxHeight="250">
                                             <ListBox MinHeight="80"
                                                      ItemsSource="{Binding autoM.gIncludeLists}"
                                                      SelectedItem="{Binding autoM.gSelectedIncludeFile}">
@@ -87,7 +84,7 @@
                                         </StackPanel>
                                     </GroupBox.Header>
                                     <Border>
-                                        <ScrollViewer>
+                                        <ScrollViewer MaxHeight="250">
                                             <ListBox MinHeight="80"
                                                 ItemsSource="{Binding autoM.gLibLists}"
                                                      SelectedItem="{Binding autoM.gSelectedLibFile}">
@@ -103,6 +100,10 @@
                                         </ScrollViewer>
                                     </Border>
                                 </GroupBox>
+                                <DockPanel>
+                                    <TextBlock Text="输入库名称: "></TextBlock>
+                                    <TextBox Text="{Binding autoM.gLibName}"></TextBox>
+                                </DockPanel>
                             </StackPanel>
                         </Border>
                     </GroupBox>
@@ -112,7 +113,7 @@
                                 <Border MinWidth="200">
                                     <GroupBox Header="选择c++语言版本">
                                         <ComboBox Margin="5,1,5,1"
-                                                  SelectedIndex="1"
+                                                   SelectedIndex="4"
                                                   ItemsSource="{Binding autoM.gCppVersionLists}"
                                                   SelectedItem="{Binding autoM.gSelectedVersion}"></ComboBox>
                                     </GroupBox>
@@ -120,7 +121,8 @@
                                 <Border MinWidth="200">
                                     <GroupBox Header="选择要转换的语言">
                                         <ComboBox Margin="5,1,5,1"
-                                                   SelectedIndex="4"
+                                                 
+                                                   SelectedIndex="1"
                                                   ItemsSource="{Binding autoM.gLanguageLists}"
                                                    SelectedItem="{Binding autoM.gSelectedLanguage}"></ComboBox>
                                     </GroupBox>
@@ -142,19 +144,29 @@
                     </GroupBox>
                     <GroupBox Header="生成操作">
                         <Border Margin="5" MinHeight="45">
-                            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <DockPanel DockPanel.Dock="Bottom">
                                 <Button Width="150"  Height="30" Margin="0,5,10,5" VerticalAlignment="Center"
                                         Content="生成c#库接口文件"
-                                        Command="{Binding autoVM.IBuildNet6Proj}"></Button>
+                                        Command="{Binding autoVM.IBuildCsharpLib}"></Button>
                                 <Button Width="150" Height="30" Margin="0,5,5,5" VerticalAlignment="Center"
-                                        Content="生成.NetWPF项目"
-                                         Command="{Binding autoVM.IBuildCsharpLib}"></Button>
-                            </StackPanel>
+                                        Content="生成.NetWPF项目Lib"
+                                         Command="{Binding autoVM.IBuildNet6Proj}"></Button>
+                                <Button Width="150" Height="30" Margin="0,5,5,5" VerticalAlignment="Center"
+                                        Content="生成.NetWPF项目exe"
+                                         Command="{Binding autoVM.IBuildNet6ProjExe}"></Button>
+                                <TextBlock Text="(温馨提示: 记得拷贝c++DLL,到bin目录下)" Margin="0,5,0,0" FontSize="10"></TextBlock>
+                                <Button Width="80"  Height="30" Margin="5,5,5,5" HorizontalAlignment="Right" Content="打开输出目录"
+                                           Command="{Binding autoVM.IOpenOutDir}"></Button>
+                            </DockPanel>
                         </Border>
                     </GroupBox>
                 </StackPanel>
             </ScrollViewer>
         </Border>
-        <Border Grid.Row="2"></Border>
+        <Border Grid.Row="2">
+            <GroupBox Header="输出日志">
+                <TextBox x:Name="LogText" TextWrapping="Wrap"></TextBox>
+            </GroupBox>
+        </Border>
     </Grid>
 </Window>

@@ -25,6 +25,13 @@ namespace XPloteAutoBuild
             InitializeComponent();
             autoVM = IocHelper.gDefaultIoc.gViewModel;
             autoM= IocHelper.gDefaultIoc.gModel;
+            XPlote.Expand.WindowLog.Default.BindLogCommon((str) => {
+
+                this.Dispatcher.BeginInvoke(() => {
+                    LogText.Text = str;
+                });
+            
+            });
             this.DataContext = this;
         }
 

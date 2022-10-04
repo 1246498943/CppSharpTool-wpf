@@ -1,9 +1,19 @@
-﻿<Application x:Class="XPloteAutoBuild.App"
+﻿<!--<xp:XPloteApplication x:Class="XPloteAutoBuild.App"
+                 xmlns:xp="clr-namespace:XPlote.Framework.WPF;assembly=XPlote.Framework.WPF"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:XPloteAutoBuild"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:XPloteAutoBuild">
+    --><!--StartupUri="MainWindow.xaml"--><!--
     <Application.Resources>
          
     </Application.Resources>
+</xp:XPloteApplication>-->
+<Application x:Class="XPloteAutoBuild.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:XPloteAutoBuild" StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+    </Application.Resources>
 </Application>
+

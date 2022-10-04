@@ -19,7 +19,7 @@ namespace XPloteAutoBuild
 
         }
 
-        private string mLibName = "XPloteSharpLib";
+        private string mLibName;
 		public string gLibName
 		{
 			get => mLibName;
@@ -118,7 +118,7 @@ namespace XPloteAutoBuild
 		/// <summary>
 		/// 选择的语言版本.
 		/// </summary>
-		private string  mSelectedLanguage = "Csharp";
+		private string  mSelectedLanguage = "CSharp";
 		public string gSelectedLanguage
         {
 			get => mSelectedLanguage;

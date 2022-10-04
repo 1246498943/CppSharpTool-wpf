@@ -9,6 +9,7 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using CppSharp.Generators;
 using CppSharp.Parser;
+using System.IO;
 
 namespace XPloteAutoBuild
 {
@@ -47,13 +48,26 @@ namespace XPloteAutoBuild
 
         public ICommand IBuildNet6Proj { get; set; }
 
+        public ICommand IBuildNet6ProjExe { get; set; }
         public ICommand IBuildCsharpLib { get; set; }
 
+        /// <summary>
+        /// 打开输出目录.
+        /// </summary>
+        public ICommand IOpenOutDir { get; set; }
         #endregion
 
         private void initSouce()
         {
             initModelSource();
+
+            IOpenOutDir = new RelayCommand(() => {
+
+
+                System.Diagnostics.Process.Start(XPloteConfig.baseDir);
+
+            });
+
             ISelectedHeadFiles = new RelayCommand(() =>
             {
 
@@ -95,7 +109,14 @@ namespace XPloteAutoBuild
                     {
                         gAutoModel.gLibLists.Add(item);
                     }
-
+                    //这里把库名称设置为第一个添加的lib.
+                    if (files.Count>0)
+                    {
+                        var libname = new FileInfo(files[0]).Name;
+                        libname = libname.Substring(0, libname.Length-".lib".Length);
+                        gAutoModel.gLibName =libname;
+                    }
+                    PrintLog($"库文件导出完成..{gAutoModel.gLibName}");
                 });
 
             });
@@ -121,15 +142,37 @@ namespace XPloteAutoBuild
 
             });
 
-            IBuildNet6Proj  = new RelayCommand(()=> { 
-            
+            IBuildCsharpLib = new RelayCommand(() =>
+            {
 
-            
+                GetError(() =>
+                {
+                    CppSharpBuild.Build();
+                    PrintLog($"{gAutoModel.gSelectedLanguage} 库生成完成...");
+
+                });
             });
-            IBuildCsharpLib = new RelayCommand(()=>{
-            
 
-            
+            IBuildNet6Proj  = new RelayCommand(() =>
+            {
+
+                GetError(() =>
+                {
+                    AutoBuildNet6ProjHelper autoBuildNet6 = new AutoBuildNet6ProjHelper(gAutoModel);
+                    autoBuildNet6.BuildNet6ProjLib();
+                    PrintLog($"项目配置文件生成完成(lib)");
+
+                });
+            });
+            IBuildNet6ProjExe  = new RelayCommand(() =>
+            {
+
+                GetError(() =>
+                {
+                    AutoBuildNet6ProjHelper autoBuildNet6 = new AutoBuildNet6ProjHelper(gAutoModel);
+                    autoBuildNet6.BuildNet6ProjExe();
+                    PrintLog($"项目配置文件生成完成(exe)");
+                });
             });
 
 
@@ -139,7 +182,7 @@ namespace XPloteAutoBuild
         {
             //语言列表
             gAutoModel?.gLanguageLists.Clear();
-            var languagelists = Enum.GetValues(typeof(LanguageVersion));
+            var languagelists = Enum.GetValues(typeof(GeneratorKind));
             foreach (var languagelist in languagelists)
             {
                 gAutoModel?.gLanguageLists.Add(languagelist.ToString());
@@ -147,7 +190,7 @@ namespace XPloteAutoBuild
 
             //cpp版本>
             gAutoModel?.gCppVersionLists.Clear();
-            var cpplists = Enum.GetValues(typeof(GeneratorKind));
+            var cpplists = Enum.GetValues(typeof(LanguageVersion));
             foreach (var cppitem in cpplists)
             {
                 gAutoModel?.gCppVersionLists.Add(cppitem.ToString());
