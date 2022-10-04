@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using CppSharp.Generators;
 using CppSharp.Parser;
 using System.IO;
+using System.Windows.Shapes;
 
 namespace XPloteAutoBuild
 {
@@ -63,9 +64,7 @@ namespace XPloteAutoBuild
 
             IOpenOutDir = new RelayCommand(() => {
 
-
-                System.Diagnostics.Process.Start(XPloteConfig.baseDir);
-
+                System.Diagnostics.Process.Start("explorer.exe", XPloteConfig.baseDir);
             });
 
             ISelectedHeadFiles = new RelayCommand(() =>

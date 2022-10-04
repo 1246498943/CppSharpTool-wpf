@@ -16,7 +16,7 @@ namespace XPloteAutoBuild
             }
             return dir;
         }
-        public static string baseDir = $"{AppDomain.CurrentDomain.BaseDirectory}\\OutDir\\";
+        public static string baseDir = $"{AppDomain.CurrentDomain.BaseDirectory}OutDir";
         public static string OutNet6Proj = CreatDir($"{baseDir}\\XPloteCsharpProjp");
         public static string OutNet6ProjExe = CreatDir($"{baseDir}\\XPloteCsharpProjpExe");
         public static string OutCsharpLib = CreatDir($"{baseDir}\\XPloteCsharpLib");
